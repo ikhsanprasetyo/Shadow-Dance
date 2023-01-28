@@ -232,9 +232,9 @@ void ResetConvars()
         particle_hack->var->value.boolean = true;
         drawrange->var->value.flt = (0);
         sv_cheats->var->value.boolean = (0);
-        if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback) {
-            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(3293), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val);
-        }
+        //if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback) {
+            //callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(3293), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val);
+        //}
     }
 }
 
@@ -272,8 +272,8 @@ void SetCamDistance(int val) {
         camera_distance->var->value.flt = (val);
         r_farz->var->value.flt = (val * 2);
 
-        if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback) {
-            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(3293), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val);
-        }
+        //if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback) {
+            //callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(3293), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val);
+        //}
     }
 }
