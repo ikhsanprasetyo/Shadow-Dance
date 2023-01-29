@@ -163,7 +163,7 @@ void InitSchema() {
     m_iHealth = Netvars->Get((u64)"m_iHealth")->offset;
     m_iMaxHealth = Netvars->Get((u64)"m_iMaxHealth")->offset;
 
-    m_bDormant = Netvars->Get((u64)"m_bDormant")->offset; //30-Jan-23 test
+    //m_bDormant = Netvars->Get((u64)"m_bDormant")->offset; //30-Jan-23 test
     //m_clrRender //ganti warna hero
     //m_hOwnerEntity = Netvars->Get((u64)"m_hAssignedHero")->offset; //29-Jan-23 test
    
@@ -207,7 +207,7 @@ int GetHeroValue()
         isAlive = Heroes[localHero]->IsAlive();
         iTeamNum = Heroes[localHero]->TeamNum();
         isVisibleByEnemy = Heroes[localHero]->IsVisibleByEnemy();
-        bDormant = Heroes[localHero]->IsDormant();
+        //bDormant = (bool)Heroes[localHero]->IsDormant();
     }
 
     return 1;
@@ -370,7 +370,7 @@ void PrintHero1()
     std::cout << "localHero iHealth :\t\t" << iHealth << "\n";
     std::cout << "localHero iMaxHealth :\t\t" << iMaxHealth << "\n";
     std::cout << "localHero iTeamNum :\t\t" << iTeamNum << "\n";
-    std::cout << "localHero enemy bDormant:\t" << bDormant << "\n";
+    //std::cout << "localHero enemy bDormant:\t" << bDormant << "\n";
 
     //std::cout << "localHero iAttackRange :\t" << iAttackRange << "\n";
 

@@ -75,14 +75,23 @@ public:
     {
         return *(int*)((u64)this + m_iMaxHealth);
     }
-    bool IsDormant()
+
+    /*
+    int IsDormant()
     {
-        return *(bool*)((u64)this + m_bDormant);
+        return *(int*)((u64)this + m_bDormant);
     }
+    */
+    
+
+    /*
     int GetHighestEntityIndex()
     {
         return *(int*)((u64)this + 0x1e90);
     }
+    */
+    
+    
     /*
     int AttackRange()
     {
@@ -94,6 +103,7 @@ public:
     
 };
 
+/*
 enum class GameState : int
 {
     DOTA_GAMERULES_STATE_INIT = 0,
@@ -108,4 +118,6 @@ enum class GameState : int
     DOTA_GAMERULES_CUSTOM_GAME_SETUP,
     DOTA_GAMERULES_WAIT_FOR_MAP_TO_LOAD
 };
+*/
+
 // vbe = CEntityInstance = 16B0
