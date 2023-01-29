@@ -146,7 +146,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 		//}
 		else if (VBE == -1) 
 		{
-			bVBE = false;
+			//bVBE = false;
 		}
 		ImGui::Dummy(ImVec2(1, 15));
 		ImGui::End();
@@ -183,7 +183,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 
 	}
 	
-	//GetHeroValue();
+	GetHeroValue();
 	if (GetAsyncKeyState(VK_NUMPAD1) & 1) //29-Jan-23
 	{
 		PrintHero1(); 

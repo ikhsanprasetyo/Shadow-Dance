@@ -160,6 +160,8 @@ void InitSchema() {
     m_lifeState = Netvars->Get((u64)"m_lifeState")->offset;
 
     m_lifeState = Netvars->Get((u64)"m_iHealth")->offset;
+    //m_hOwnerEntity = Netvars->Get((u64)"m_hAssignedHero")->offset; //29-Jan-23 test
+    
     //m_iHealthBarOffset
     //m_iAttackRange = Netvars->Get((u64)"m_iAttackRange")->offset; //not working
     
@@ -192,7 +194,7 @@ int unique_num() {
 int GetHeroValue()
 {
     
-    //iAttackRange = Heroes[localHero]->AttackRange();
+    
 
     return 1;
 }
@@ -200,7 +202,7 @@ int GetHeroValue()
 int getVBE() {
     if (Heroes.size() == 0) {
         localHero = -1;
-        return -1;
+        return -1; //cek
     }
 
     if (localHero == -1)
@@ -228,9 +230,10 @@ int getVBE() {
     }
 
     auto VBE = Heroes[localHero]->IsVisibleByEnemy();
-    //iHealth = Heroes[localHero]->Health();
-    //isAlive = Heroes[localHero]->IsAlive();
-    //isVisibleByEnemy = Heroes[localHero]->IsVisibleByEnemy();
+    iHealth = Heroes[localHero]->Health();
+    isAlive = Heroes[localHero]->IsAlive();
+
+    isVisibleByEnemy = Heroes[localHero]->IsVisibleByEnemy();
 
     duplicates.push_front(VBE);
     if (duplicates.size() == threshold + 1)

@@ -2,7 +2,7 @@
 
 class CEntityInstance;
 u64 m_iTeamNum, m_hOwnerEntity, m_flStartSequenceCycle, m_fGameTime, m_nGameState, m_lifeState,
-m_iGameMode, m_clrRender, m_hReplicatingOtherHeroModel, m_iAttackRange, m_iHealth;
+m_iGameMode, m_clrRender, m_hReplicatingOtherHeroModel, m_iAttackRange, m_iHealth, m_hAssignedHero;
 
 struct SchemaClassBinding {
     SchemaClassBinding* parent; // I THINK
