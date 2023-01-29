@@ -238,16 +238,20 @@ int getVBE() {
 
     }
 
-    auto VBE = Heroes[localHero]->IsVisibleByEnemy();
+    float VBE = Heroes[localHero]->IsVisibleByEnemy();
     
 
     
-
-    duplicates.push_front(VBE);
+    /*duplicates.push_front(VBE);
     if (duplicates.size() == threshold + 1)
         duplicates.pop_back();
 
     if (unique_num() < 2)
+    {
+        return 0;
+    }*/
+
+    if (VBE == 0.0f)
     {
         return 0;
     }

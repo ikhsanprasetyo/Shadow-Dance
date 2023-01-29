@@ -56,6 +56,8 @@ public:
         //{
         //    UnitAlive = 0, KillCam = 1, UnitDead = 2
         //};
+
+        //int unitAlive = 65536, unitDead =65538;
         return *(int*)((u64)this + m_lifeState);
     }
     float IsVisibleByEnemy() {
