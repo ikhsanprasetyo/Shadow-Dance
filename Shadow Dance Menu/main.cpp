@@ -180,6 +180,10 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 		SetCamDistance(camDistance);
 
 	}
+	if (GetAsyncKeyState(VK_NUMPAD1) & 1)
+	{
+		PrintHero1();
+	}
 
 	tempBVBE = bVBE, tempBDrawRange = bDrawRange, tempBParticleHack = bParticleHack, tempBNoFog = bNoFog;
 	tempcamDistance = camDistance;

@@ -17,3 +17,4 @@ void SetNoFog(int val);
 void SetCamDistance(int val);
 template <class TipeData> 
 void Print(const char* label, TipeData nilai);
+void PrintHero1();

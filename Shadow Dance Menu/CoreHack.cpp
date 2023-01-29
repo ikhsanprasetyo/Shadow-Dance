@@ -194,7 +194,6 @@ int getVBE() {
             if (localPlayerIndex == Heroes[i]->OwnerIndex())
             {
                 localHero = (int)i; //29-Jan-23
-                Print<int>("localHero Index Number :\t", localHero);
                 break;
             }
             else
@@ -288,10 +287,10 @@ void SetCamDistance(int val) {
         const auto old_val = camera_distance->var->value;
         camera_distance->var->value.flt = ((float)val); //29-Jan-23
         r_farz->var->value.flt = ((float)(val * 2)); //29-Jan-23
-        //if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback) 
-        //{
-            //callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(4000), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
-        //}
+        if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback) 
+        {
+            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(4000), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
+        }
         /*
         if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback) 
         {
@@ -309,4 +308,9 @@ void Print(const char* label, TipeData nilai)
 {
     std::cout << label << nilai << "\n";
     return;
+}
+
+void PrintHero1()
+{
+    std::cout << "localHero Index Number :\t" << localHero << "\n";
 }
