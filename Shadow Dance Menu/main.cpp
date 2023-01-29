@@ -145,10 +145,10 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 		ImGui::End();
 		ImGui::PopFont();
 	}
-	if (tempBSvCheats != bSvCheats)
-	{
-		SetSvCheats(!bSvCheats);
-	}
+	//if (tempBSvCheats != bSvCheats)
+	//{
+	//	SetSvCheats(!bSvCheats);
+	//}
 	if (weather_item != item_current)
 	{
 		SetWeather(item_current);

@@ -254,7 +254,7 @@ void SetDrawRange(int val) {
     if (sv_cheats && drawrange)
     {
 
-        sv_cheats->var->value.boolean = (1);
+        sv_cheats->var->value.boolean = (1); //29-Jan-23
         drawrange->var->value.flt = (val);
     }
 }

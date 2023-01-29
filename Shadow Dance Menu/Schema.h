@@ -1,7 +1,7 @@
 #pragma once
 #include "common.h"
 u64 SchemaSystem;
-u64 Panorama;
+//u64 Panorama; //29-Jan-23
 
 int vstrcmp(u64 a, u64 b) {
     return strcmp((cc)a, (cc)b);
