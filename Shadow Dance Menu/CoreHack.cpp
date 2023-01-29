@@ -191,15 +191,21 @@ int unique_num() {
     return (int)nums.size(); //29-Jan-23
 }
 
-/*
+
 int GetHeroValue()
 {
 
-
+    if (localHero > -1)
+    {
+        iHealth = Heroes[localHero]->Health();
+        isAlive = Heroes[localHero]->IsAlive();
+        iTeamNum = Heroes[localHero]->TeamNum();
+        isVisibleByEnemy = Heroes[localHero]->IsVisibleByEnemy();
+    }
 
     return 1;
 }
-*/
+
 
 
 int getVBE() {
@@ -233,14 +239,9 @@ int getVBE() {
     }
 
     auto VBE = Heroes[localHero]->IsVisibleByEnemy();
-    if (localHero != -1)
-    {
-        iHealth = Heroes[localHero]->Health();
-        isAlive = Heroes[localHero]->IsAlive();
-        iTeamNum = Heroes[localHero]->TeamNum();
-    }
+    
 
-    isVisibleByEnemy = Heroes[localHero]->IsVisibleByEnemy();
+    
 
     duplicates.push_front(VBE);
     if (duplicates.size() == threshold + 1)
@@ -270,7 +271,7 @@ void ResetConvars()
         
         if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback)
         {
-            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(4000), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
+            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(3293), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
         }
         
         
@@ -326,7 +327,7 @@ void SetCamDistance(int val) {
         
         if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback) 
         {
-            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(4000), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
+            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(3293), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
         }
         
         
@@ -352,11 +353,11 @@ void Print(const char* label, TipeData nilai)
 
 void PrintHero1()
 {
-    std::cout << "localHero Index Number :\t" << localHero << "\n";
-    std::cout << "localHero IsAlive :\t" << isAlive << "\n";
-    std::cout << "localHero isVisibleByEnemy :\t" << isVisibleByEnemy << "\n";
-    std::cout << "localHero iHealth :\t" << iHealth << "\n";
-    std::cout << "localHero iTeamNum :\t" << iTeamNum << "\n";
+    std::cout << "localHero Index Number :\t\t" << localHero << "\n";
+    std::cout << "localHero IsAlive :\t\t" << isAlive << "\n";
+    std::cout << "localHero isVisibleByEnemy :\t\t" << isVisibleByEnemy << "\n";
+    std::cout << "localHero iHealth :\t\t" << iHealth << "\n";
+    std::cout << "localHero iTeamNum :\t\t" << iTeamNum << "\n";
 
     //std::cout << "localHero iAttackRange :\t" << iAttackRange << "\n";
 

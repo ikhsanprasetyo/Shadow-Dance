@@ -183,7 +183,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 
 	}
 	
-	//GetHeroValue();
+	GetHeroValue();
 	if (GetAsyncKeyState(VK_NUMPAD1) & 1) //29-Jan-23
 	{
 		PrintHero1(); 
