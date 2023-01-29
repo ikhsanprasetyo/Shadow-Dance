@@ -191,13 +191,16 @@ int unique_num() {
     return (int)nums.size(); //29-Jan-23
 }
 
+/*
 int GetHeroValue()
 {
-    
-    
+
+
 
     return 1;
 }
+*/
+
 
 int getVBE() {
     if (Heroes.size() == 0) {
@@ -260,10 +263,14 @@ void ResetConvars()
         particle_hack->var->value.boolean = true;
         drawrange->var->value.flt = (0);
         sv_cheats->var->value.boolean = (0);
+        
+        /*
         if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback)
         {
-            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(9999), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
+            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(4000), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
         }
+        */
+        
         /*
          if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback)
         {
@@ -313,10 +320,13 @@ void SetCamDistance(int val) {
         const auto old_val = camera_distance->var->value;
         camera_distance->var->value.flt = ((float)val); //29-Jan-23
         r_farz->var->value.flt = ((float)(val * 2)); //29-Jan-23
+        
         if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback) 
         {
-            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(9999), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
+            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(4000), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
         }
+        
+        
         
         /*
         if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback) 

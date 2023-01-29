@@ -18,4 +18,4 @@ void SetCamDistance(int val);
 template <class TipeData> 
 void Print(const char* label, TipeData nilai);
 void PrintHero1();
-int GetHeroValue();
+//int GetHeroValue();
