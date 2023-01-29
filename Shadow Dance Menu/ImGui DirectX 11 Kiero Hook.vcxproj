@@ -73,22 +73,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
     <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
-    <TargetName>driver</TargetName>
+    <TargetName>Firefox</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
     <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
-    <TargetName>driver</TargetName>
+    <TargetName>Firefox</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryPath>D:\Programs\MSDirectX-SDK\Lib\x64;$(LibraryPath)</LibraryPath>
     <IncludePath>D:\Programs\MSDirectX-SDK\Include;$(IncludePath)</IncludePath>
-    <TargetName>driver</TargetName>
+    <TargetName>Firefox</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LibraryPath>D:\Programs\MSDirectX-SDK\Lib\x64;$(LibraryPath)</LibraryPath>
     <IncludePath>D:\Programs\MSDirectX-SDK\Include;$(IncludePath)</IncludePath>
-    <TargetName>driver</TargetName>
+    <TargetName>Firefox</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
