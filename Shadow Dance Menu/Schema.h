@@ -123,7 +123,7 @@ public:
         classname = a;
         name = b;
         _typename = c;
-        offset = d;
+        offset = (int)d; //29-Jan-23
     }
 };
 class SchemaNetvarCollection {

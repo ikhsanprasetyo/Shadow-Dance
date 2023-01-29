@@ -16,6 +16,8 @@ FILE* f;
 HMODULE hModule;
 ImFont* mainFont;
 ImFont* vbeFont;
+HANDLE CurProcHandle; //29-Jan-23
+int CurProcId; //29-Jan-23
 
 void InitImGui()
 {
@@ -115,7 +117,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 		ImGui::Checkbox("No Map Fog.", &bNoFog);
 		ImGui::Checkbox("Particle Map Hack.", &bParticleHack);
 		ImGui::Dummy(ImVec2(1, 20));
-		ImGui::Text("@SK68-ph");
+		//ImGui::Text("@SK68-ph");
 		ImGui::End();
 		ImGui::PopFont();
 	}
@@ -195,7 +197,13 @@ DWORD WINAPI MainThread(HMODULE hModule)
 	//AllocConsole();
 	//FILE* f;
 	//freopen_s(&f, "CONOUT$", "w", stdout);
-
+	//AllocConsole(); //29-Jan-23
+	//FILE* f;
+	//freopen_s(&f, "CONOUT$", "w", stdout);
+	{
+		CurProcId = GetCurrentProcessId();
+		CurProcHandle = OpenProcess(PROCESS_ALL_ACCESS, TRUE, CurProcId);
+	}
 	InitHack();
 	bool init_hook = false;
 	do
@@ -217,8 +225,8 @@ DWORD WINAPI MainThread(HMODULE hModule)
 			RemoveVmtHooks();
 			MessageBeep(MB_OK);
 			kiero::shutdown();
-			//fclose(f);
-			//FreeConsole();
+			//if (f) fclose(f); FreeConsole();
+			
 			FreeLibraryAndExitThread(hModule, 0);
 		}
 	}
