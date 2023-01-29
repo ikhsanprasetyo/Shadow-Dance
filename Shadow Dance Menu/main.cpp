@@ -137,7 +137,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 		{
 			ImGui::TextColored(ImVec4(255, 0, 0, 255), "Visible");
 		}
-		else if (VBE == -1)
+		else if (VBE != 0) // not visible by enemy
 		{
 			bVBE = false;
 		}
@@ -188,9 +188,9 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 
 DWORD WINAPI MainThread(HMODULE hModule)
 {
-	AllocConsole();
-	FILE* f;
-	freopen_s(&f, "CONOUT$", "w", stdout);
+	//AllocConsole();
+	//FILE* f;
+	//freopen_s(&f, "CONOUT$", "w", stdout);
 
 	InitHack();
 	bool init_hook = false;
