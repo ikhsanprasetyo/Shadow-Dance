@@ -197,9 +197,9 @@ DWORD WINAPI MainThread(HMODULE hModule)
 	//AllocConsole();
 	//FILE* f;
 	//freopen_s(&f, "CONOUT$", "w", stdout);
-	//AllocConsole(); //29-Jan-23
-	//FILE* f;
-	//freopen_s(&f, "CONOUT$", "w", stdout);
+	AllocConsole(); //29-Jan-23
+	FILE* f;
+	freopen_s(&f, "CONOUT$", "w", stdout);
 	{
 		CurProcId = GetCurrentProcessId();
 		CurProcHandle = OpenProcess(PROCESS_ALL_ACCESS, TRUE, CurProcId);
@@ -225,7 +225,7 @@ DWORD WINAPI MainThread(HMODULE hModule)
 			RemoveVmtHooks();
 			MessageBeep(MB_OK);
 			kiero::shutdown();
-			//if (f) fclose(f); FreeConsole();
+			if (f) fclose(f); FreeConsole();
 			
 			FreeLibraryAndExitThread(hModule, 0);
 		}
