@@ -209,10 +209,10 @@ DWORD WINAPI MainThread(HMODULE hModule)
 	AllocConsole(); //29-Jan-23
 	FILE* f;
 	freopen_s(&f, "CONOUT$", "w", stdout);
-	//{
-		//CurProcId = GetCurrentProcessId();
-		//CurProcHandle = OpenProcess(PROCESS_ALL_ACCESS, TRUE, CurProcId);
-	//}
+	{
+		CurProcId = GetCurrentProcessId();
+		CurProcHandle = OpenProcess(PROCESS_ALL_ACCESS, TRUE, CurProcId);
+	}
 	InitHack();
 	bool init_hook = false;
 	do

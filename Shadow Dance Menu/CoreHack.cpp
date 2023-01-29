@@ -27,9 +27,9 @@ SchemaNetvarCollection* Netvars = 0;;
 int localHero = -1;
 int localPlayerIndex = -1;
 
-int isAlive;
-float isVisibleByEnemy;
-int iAttackRange;
+int isAlive = 0, iHealth = 0;
+float isVisibleByEnemy = 0.0f;
+int iAttackRange = 0;
 
 int& GetLocalPlayer(int& = localPlayerIndex, int screen = 0) {
     typedef int& (*Fn)(void*, int&, int);
@@ -159,6 +159,8 @@ void InitSchema() {
     m_hReplicatingOtherHeroModel = Netvars->Get((u64)"m_hReplicatingOtherHeroModel")->offset;
     m_lifeState = Netvars->Get((u64)"m_lifeState")->offset;
 
+    m_lifeState = Netvars->Get((u64)"m_iHealth")->offset;
+    //m_iHealthBarOffset
     //m_iAttackRange = Netvars->Get((u64)"m_iAttackRange")->offset; //not working
     
 }
@@ -226,6 +228,7 @@ int getVBE() {
     }
 
     auto VBE = Heroes[localHero]->IsVisibleByEnemy();
+    //iHealth = Heroes[localHero]->Health();
     //isAlive = Heroes[localHero]->IsAlive();
     //isVisibleByEnemy = Heroes[localHero]->IsVisibleByEnemy();
 
@@ -335,6 +338,7 @@ void PrintHero1()
     std::cout << "localHero Index Number :\t" << localHero << "\n";
     std::cout << "localHero IsAlive :\t" << isAlive << "\n";
     std::cout << "localHero isVisibleByEnemy :\t" << isVisibleByEnemy << "\n";
+    std::cout << "localHero iHealth :\t" << iHealth << "\n";
     //std::cout << "localHero iAttackRange :\t" << iAttackRange << "\n";
 
     //std::cout << "localHero IsAlive :\t" << Heroes[localHero]->IsAlive() << "\n";
