@@ -194,7 +194,7 @@ int getVBE() {
             if (localPlayerIndex == Heroes[i]->OwnerIndex())
             {
                 localHero = (int)i; //29-Jan-23
-                std::cout << "localHero Index Number :\t" << localHero << "\n";
+                Print<int>("localHero Index Number :\t", localHero);
                 break;
             }
             else
@@ -302,4 +302,11 @@ void SetCamDistance(int val) {
             //callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(3293), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val);
         //}
     }
+}
+
+template <class TipeData> 
+void Print(const char* label, TipeData nilai)
+{
+    std::cout << label << nilai << "\n";
+    return;
 }
