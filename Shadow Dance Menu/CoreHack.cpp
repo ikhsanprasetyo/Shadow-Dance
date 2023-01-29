@@ -160,7 +160,7 @@ void InitSchema() {
     m_lifeState = Netvars->Get((u64)"m_lifeState")->offset;
 
     m_iHealth = Netvars->Get((u64)"m_iHealth")->offset;
-    m_iHealth = Netvars->Get((u64)"m_iMaxHealth")->offset;
+    m_iMaxHealth = Netvars->Get((u64)"m_iMaxHealth")->offset;
     //m_hOwnerEntity = Netvars->Get((u64)"m_hAssignedHero")->offset; //29-Jan-23 test
     
     //m_iHealthBarOffset

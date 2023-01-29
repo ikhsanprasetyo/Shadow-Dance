@@ -73,7 +73,7 @@ public:
     }
     int MaxHealth()
     {
-        return *(int*)((u64)this + m_iHealth);
+        return *(int*)((u64)this + m_iMaxHealth);
     }
 
     /*
