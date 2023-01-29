@@ -137,14 +137,14 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 		{
 			ImGui::TextColored(ImVec4(255, 0, 0, 255), "Visible");
 		}
-		if (VBE != 0) // not Visible by enemy
+		if (VBE > 0) // not Visible by enemy
 		{
 			ImGui::TextColored(ImVec4(0, 255, 0, 255), "Not Visible");
 		}
-		//else if (VBE != 0) // not visible by enemy //29-Jan-23
-		//{
-			//bVBE = false;
-		//}
+		else if (VBE == -1) 
+		{
+			bVBE = false;
+		}
 		ImGui::Dummy(ImVec2(1, 15));
 		ImGui::End();
 		ImGui::PopFont();
