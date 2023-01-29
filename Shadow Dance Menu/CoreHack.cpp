@@ -135,6 +135,7 @@ void InitEntity() {
 void InitSchema() {
     CMsg = (ConMsg)GetProcAddress(GetModuleHandleA("tier0.dll"), "Msg");
     SchemaSystem = (u64)GetInterface("schemasystem.dll", "SchemaSystem_001");
+    Panorama = (u64)GetInterface("panorama.dll", "PanoramaUIEngine001"); //29-Jan-23
     Netvars = new SchemaNetvarCollection;
     Netvars->Add("C_DOTA_BaseNPC", "client.dll");
     Netvars->Add("C_DOTA_BaseNPC_Hero", "client.dll");
@@ -143,6 +144,7 @@ void InitSchema() {
     Netvars->Add("C_BaseEntity", "client.dll");
     Netvars->Add("C_BaseModelEntity", "client.dll");
     Netvars->Add("C_BaseCombatCharacter", "client.dll");
+
     m_iTeamNum = Netvars->Get((u64)"m_iTeamNum")->offset;
     m_hOwnerEntity = Netvars->Get((u64)"m_hOwnerEntity")->offset;
     m_flStartSequenceCycle = Netvars->Get((u64)"m_flStartSequenceCycle")->offset;
@@ -191,7 +193,7 @@ int getVBE() {
         {
             if (localPlayerIndex == Heroes[i]->OwnerIndex())
             {
-                localHero = i;
+                localHero = (int)i; //29-Jan-23
                 break;
             }
             else
@@ -253,7 +255,7 @@ void SetDrawRange(int val) {
     {
 
         sv_cheats->var->value.boolean = (1);
-        drawrange->var->value.flt = (val);
+        drawrange->var->value.flt = (float)(val);
     }
 }
 void SetParticleHack(int val) {
@@ -273,8 +275,8 @@ void SetCamDistance(int val) {
     if (camera_distance && r_farz)
     {
         const auto old_val = camera_distance->var->value;
-        camera_distance->var->value.flt = (val);
-        r_farz->var->value.flt = (val * 2);
+        camera_distance->var->value.flt = (float)(val); //29-Jan-23
+        r_farz->var->value.flt = (float)(val * 2); //29-Jan-23
 
         //if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback) {
             //callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(3293), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val);
