@@ -258,7 +258,7 @@ void ResetConvars()
         sv_cheats->var->value.boolean = (0);
         if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback)
         {
-            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(3999), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
+            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(9999), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
         }
         /*
          if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback)
@@ -311,7 +311,7 @@ void SetCamDistance(int val) {
         r_farz->var->value.flt = ((float)(val * 2)); //29-Jan-23
         if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback) 
         {
-            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(3999), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
+            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(9999), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
         }
         
         /*
