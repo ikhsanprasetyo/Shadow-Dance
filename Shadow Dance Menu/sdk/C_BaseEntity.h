@@ -2,7 +2,7 @@
 
 class CEntityInstance;
 u64 m_iTeamNum, m_hOwnerEntity, m_flStartSequenceCycle, m_fGameTime, m_nGameState, m_lifeState,
-m_iGameMode, m_clrRender, m_hReplicatingOtherHeroModel, m_iAttackRange, m_iHealth, m_iMaxHealth, m_hAssignedHero;
+m_iGameMode, m_clrRender, m_hReplicatingOtherHeroModel, m_iAttackRange, m_iHealth, m_iMaxHealth, m_hAssignedHero, m_bDormant;
 
 struct SchemaClassBinding {
     SchemaClassBinding* parent; // I THINK
@@ -75,7 +75,14 @@ public:
     {
         return *(int*)((u64)this + m_iMaxHealth);
     }
-
+    bool IsDormant()
+    {
+        return *(bool*)((u64)this + m_bDormant);
+    }
+    int GetHighestEntityIndex()
+    {
+        return *(int*)((u64)this + 0x1e90);
+    }
     /*
     int AttackRange()
     {
@@ -87,5 +94,18 @@ public:
     
 };
 
-
+enum class GameState : int
+{
+    DOTA_GAMERULES_STATE_INIT = 0,
+    DOTA_GAMERULES_WAIT_FOR_PLAYERS_TO_LOAD,
+    DOTA_GAMERULES_HERO_SELECTION,
+    DOTA_GAMERULES_STRATEGY_TIME,
+    DOTA_GAMERULES_PREGAME,
+    DOTA_GAMERULES_GAME_IN_PROGRESS,
+    DOTA_GAMERULES_POSTGAME,
+    DOTA_GAMERULES_DISCONNECT,
+    DOTA_GAMERULES_TEAM_SHOWCASE,
+    DOTA_GAMERULES_CUSTOM_GAME_SETUP,
+    DOTA_GAMERULES_WAIT_FOR_MAP_TO_LOAD
+};
 // vbe = CEntityInstance = 16B0

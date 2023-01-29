@@ -28,6 +28,7 @@ int localHero = -1;
 int localPlayerIndex = -1;
 
 int isAlive = 0, iHealth = 0, iMaxHealth = 0, iTeamNum = 0;
+bool bDormant = false;
 float isVisibleByEnemy = 0.0f;
 int iAttackRange = 0;
 
@@ -161,8 +162,11 @@ void InitSchema() {
 
     m_iHealth = Netvars->Get((u64)"m_iHealth")->offset;
     m_iMaxHealth = Netvars->Get((u64)"m_iMaxHealth")->offset;
+
+    m_bDormant = Netvars->Get((u64)"m_bDormant")->offset; //30-Jan-23 test
+    //m_clrRender //ganti warna hero
     //m_hOwnerEntity = Netvars->Get((u64)"m_hAssignedHero")->offset; //29-Jan-23 test
-    
+   
     //m_iHealthBarOffset
     //m_iAttackRange = Netvars->Get((u64)"m_iAttackRange")->offset; //not working
     
@@ -203,6 +207,7 @@ int GetHeroValue()
         isAlive = Heroes[localHero]->IsAlive();
         iTeamNum = Heroes[localHero]->TeamNum();
         isVisibleByEnemy = Heroes[localHero]->IsVisibleByEnemy();
+        bDormant = Heroes[localHero]->IsDormant();
     }
 
     return 1;
@@ -365,6 +370,7 @@ void PrintHero1()
     std::cout << "localHero iHealth :\t\t" << iHealth << "\n";
     std::cout << "localHero iMaxHealth :\t\t" << iMaxHealth << "\n";
     std::cout << "localHero iTeamNum :\t\t" << iTeamNum << "\n";
+    std::cout << "localHero enemy bDormant:\t" << bDormant << "\n";
 
     //std::cout << "localHero iAttackRange :\t" << iAttackRange << "\n";
 
