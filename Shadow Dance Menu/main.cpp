@@ -133,6 +133,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 		{
 			ImGui::Begin("VBE", NULL,  ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar);
 		}
+	
 		int VBE = getVBE();
 
 		if (VBE == 0) // Visible by enemy
@@ -180,9 +181,11 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 		SetCamDistance(camDistance);
 
 	}
-	if (GetAsyncKeyState(VK_NUMPAD1) & 1)
+	
+	
+	if (GetAsyncKeyState(VK_NUMPAD1) & 1) //29-Jan-23
 	{
-		PrintHero1();
+		PrintHero1(); 
 	}
 
 	tempBVBE = bVBE, tempBDrawRange = bDrawRange, tempBParticleHack = bParticleHack, tempBNoFog = bNoFog;

@@ -179,6 +179,51 @@ int unique_num() {
     return (int)nums.size(); //29-Jan-23
 }
 
+int GetHeroValue()
+{
+    if (Heroes.size() == 0) {
+        localHero = -1;
+        return -1;
+    }
+
+    if (localHero == -1)
+    {
+        GetLocalPlayer(localPlayerIndex);
+        localPlayerIndex++;
+        for (size_t i = 0; i < Heroes.size(); i++)
+        {
+            if (localPlayerIndex == Heroes[i]->OwnerIndex())
+            {
+                localHero = (int)i; //29-Jan-23
+                break;
+            }
+            else
+            {
+                localHero = -1;
+            }
+
+        }
+        if (localHero == -1)
+        {
+            return -1;
+        }
+
+    }
+
+    auto VBE = Heroes[localHero]->IsVisibleByEnemy();
+    
+
+    duplicates.push_front(VBE);
+    if (duplicates.size() == threshold + 1)
+        duplicates.pop_back();
+
+    if (unique_num() < 2)
+    {
+        return 0;
+    }
+    return 1;
+}
+
 int getVBE() {
     if (Heroes.size() == 0) {
         localHero = -1;
@@ -206,10 +251,11 @@ int getVBE() {
         {
             return -1;
         }
-        
+
     }
 
     auto VBE = Heroes[localHero]->IsVisibleByEnemy();
+   
 
     duplicates.push_front(VBE);
     if (duplicates.size() == threshold + 1)
@@ -221,6 +267,7 @@ int getVBE() {
     }
     return 1;
 }
+
 
 void ResetConvars()
 {
