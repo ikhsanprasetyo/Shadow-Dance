@@ -2,7 +2,7 @@
 
 class CEntityInstance;
 u64 m_iTeamNum, m_hOwnerEntity, m_flStartSequenceCycle, m_fGameTime, m_nGameState, m_lifeState,
-m_iGameMode, m_clrRender, m_hReplicatingOtherHeroModel, m_iAttackRange, m_iHealth, m_hAssignedHero;
+m_iGameMode, m_clrRender, m_hReplicatingOtherHeroModel, m_iAttackRange, m_iHealth, m_iMaxHealth, m_hAssignedHero;
 
 struct SchemaClassBinding {
     SchemaClassBinding* parent; // I THINK
@@ -68,6 +68,10 @@ public:
         return *(int*)((u64)this + m_iTeamNum);
     }
     int Health()
+    {
+        return *(int*)((u64)this + m_iHealth);
+    }
+    int MaxHealth()
     {
         return *(int*)((u64)this + m_iHealth);
     }

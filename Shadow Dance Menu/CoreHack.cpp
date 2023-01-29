@@ -27,7 +27,7 @@ SchemaNetvarCollection* Netvars = 0;;
 int localHero = -1;
 int localPlayerIndex = -1;
 
-int isAlive = 0, iHealth = 0, iTeamNum = 0;
+int isAlive = 0, iHealth = 0, iMaxHealth = 0, iTeamNum = 0;
 float isVisibleByEnemy = 0.0f;
 int iAttackRange = 0;
 
@@ -160,6 +160,7 @@ void InitSchema() {
     m_lifeState = Netvars->Get((u64)"m_lifeState")->offset;
 
     m_iHealth = Netvars->Get((u64)"m_iHealth")->offset;
+    m_iHealth = Netvars->Get((u64)"m_iMaxHealth")->offset;
     //m_hOwnerEntity = Netvars->Get((u64)"m_hAssignedHero")->offset; //29-Jan-23 test
     
     //m_iHealthBarOffset
@@ -198,6 +199,7 @@ int GetHeroValue()
     if (localHero > -1)
     {
         iHealth = Heroes[localHero]->Health();
+        iMaxHealth = Heroes[localHero]->MaxHealth();
         isAlive = Heroes[localHero]->IsAlive();
         iTeamNum = Heroes[localHero]->TeamNum();
         isVisibleByEnemy = Heroes[localHero]->IsVisibleByEnemy();
@@ -361,6 +363,7 @@ void PrintHero1()
     std::cout << "localHero IsAlive :\t\t" << isAlive << "\n";
     std::cout << "localHero isVisibleByEnemy :\t\t" << isVisibleByEnemy << "\n";
     std::cout << "localHero iHealth :\t\t" << iHealth << "\n";
+    std::cout << "localHero iMaxHealth :\t\t" << iMaxHealth << "\n";
     std::cout << "localHero iTeamNum :\t\t" << iTeamNum << "\n";
 
     //std::cout << "localHero iAttackRange :\t" << iAttackRange << "\n";
