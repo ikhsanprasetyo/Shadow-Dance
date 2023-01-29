@@ -233,9 +233,12 @@ int getVBE() {
     }
 
     auto VBE = Heroes[localHero]->IsVisibleByEnemy();
-    iHealth = Heroes[localHero]->Health();
-    isAlive = Heroes[localHero]->IsAlive();
-    iTeamNum = Heroes[localHero]->TeamNum();
+    if (localHero != -1)
+    {
+        iHealth = Heroes[localHero]->Health();
+        isAlive = Heroes[localHero]->IsAlive();
+        iTeamNum = Heroes[localHero]->TeamNum();
+    }
 
     isVisibleByEnemy = Heroes[localHero]->IsVisibleByEnemy();
 
