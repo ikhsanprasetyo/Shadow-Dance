@@ -38,6 +38,7 @@ LRESULT __stdcall WndProc(const HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 
 // ImGui Menu Vars
 bool bMenuInit = false, bMenuExit = false, bShowMenu = true;
+bool bSvCheats = false; //28-Jan-23
 bool bVBE = false, bVBEParticle = false, bDrawRange = false, bParticleHack = false, bNoFog = false;
 const char* weatherList[] = { "Default", "Winter", " Rain", "MoonBeam", "Pestilence", "Harvest", "Sirocco", "Spring", "Ash", "Aurora" };
 int camDistance = 1200, rangeVal = 1200;
@@ -83,7 +84,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 		bShowMenu = !bShowMenu;
 	}
 
-	int tempBVBE = -1, tempBDrawRange = -1, tempBParticleHack = -1, tempBNoFog = -1;
+	int tempBVBE = -1, tempBDrawRange = -1, tempBParticleHack = -1, tempBNoFog = -1, tempBSvCheats = -1;
 	int tempcamDistance = -1;
 	int weather_item = -1;
 	ImGui_ImplDX11_NewFrame();
@@ -93,7 +94,8 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 	if (bShowMenu)
 	{
 		ImGui::PushFont(mainFont);
-		ImGui::Begin("Shadow Dance Menu");
+		ImGui::Begin("Shadow Dance Panda");
+		ImGui::Checkbox("Enable", &bSvCheats);
 		ImGui::Text("Visuals");
 		ImGui::Checkbox("Overlay Text.", &bVBE);
 		ImGui::Checkbox("Draw Blink Dagger Circle Range.", &bDrawRange);
@@ -143,6 +145,10 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 		ImGui::End();
 		ImGui::PopFont();
 	}
+	if (tempBSvCheats != bSvCheats)
+	{
+		SetSvCheats(!bSvCheats);
+	}
 	if (weather_item != item_current)
 	{
 		SetWeather(item_current);
@@ -182,9 +188,9 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 
 DWORD WINAPI MainThread(HMODULE hModule)
 {
-	//AllocConsole();
-	//FILE* f;
-	//freopen_s(&f, "CONOUT$", "w", stdout);
+	AllocConsole();
+	FILE* f;
+	freopen_s(&f, "CONOUT$", "w", stdout);
 
 	InitHack();
 	bool init_hook = false;

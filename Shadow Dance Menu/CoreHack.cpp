@@ -238,6 +238,10 @@ void ResetConvars()
     }
 }
 
+void SetSvCheats(int val)
+{
+    sv_cheats->var->value.boolean = (1);
+}
 void SetWeather(int val) {
     if (weather)
     {
