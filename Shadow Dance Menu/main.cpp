@@ -38,7 +38,7 @@ LRESULT __stdcall WndProc(const HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 
 // ImGui Menu Vars
 bool bMenuInit = false, bMenuExit = false, bShowMenu = true;
-bool bSvCheats = false; //28-Jan-23
+//bool bSvCheats = false; //28-Jan-23
 bool bVBE = false, bVBEParticle = false, bDrawRange = false, bParticleHack = false, bNoFog = false;
 const char* weatherList[] = { "Default", "Winter", " Rain", "MoonBeam", "Pestilence", "Harvest", "Sirocco", "Spring", "Ash", "Aurora" };
 int camDistance = 1200, rangeVal = 1200;
@@ -95,7 +95,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 	{
 		ImGui::PushFont(mainFont);
 		ImGui::Begin("Shadow Dance Panda");
-		ImGui::Checkbox("Enable", &bSvCheats);
+		//ImGui::Checkbox("Enable", &bSvCheats); //28-Jan-23
 		ImGui::Text("Visuals");
 		ImGui::Checkbox("Overlay Text.", &bVBE);
 		ImGui::Checkbox("Draw Blink Dagger Circle Range.", &bDrawRange);
