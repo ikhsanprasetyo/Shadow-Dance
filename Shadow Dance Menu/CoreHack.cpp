@@ -194,6 +194,7 @@ int getVBE() {
             if (localPlayerIndex == Heroes[i]->OwnerIndex())
             {
                 localHero = (int)i; //29-Jan-23
+                std::cout << "localHero Index Number :\t" << localHero << "\n";
                 break;
             }
             else
