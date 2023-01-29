@@ -26,6 +26,11 @@ SchemaNetvarCollection* Netvars = 0;;
 
 int localHero = -1;
 int localPlayerIndex = -1;
+
+int isAlive;
+float isVisibleByEnemy;
+int iAttackRange;
+
 int& GetLocalPlayer(int& = localPlayerIndex, int screen = 0) {
     typedef int& (*Fn)(void*, int&, int);
     return getvfunc<Fn>(engine, 20)(engine, localPlayerIndex, screen);
@@ -153,6 +158,9 @@ void InitSchema() {
     m_iGameMode = Netvars->Get((u64)"m_iGameMode")->offset;
     m_hReplicatingOtherHeroModel = Netvars->Get((u64)"m_hReplicatingOtherHeroModel")->offset;
     m_lifeState = Netvars->Get((u64)"m_lifeState")->offset;
+
+    //m_iAttackRange = Netvars->Get((u64)"m_iAttackRange")->offset; //not working
+    
 }
 
 void InitHack() {
@@ -181,46 +189,9 @@ int unique_num() {
 
 int GetHeroValue()
 {
-    if (Heroes.size() == 0) {
-        localHero = -1;
-        return -1;
-    }
-
-    if (localHero == -1)
-    {
-        GetLocalPlayer(localPlayerIndex);
-        localPlayerIndex++;
-        for (size_t i = 0; i < Heroes.size(); i++)
-        {
-            if (localPlayerIndex == Heroes[i]->OwnerIndex())
-            {
-                localHero = (int)i; //29-Jan-23
-                break;
-            }
-            else
-            {
-                localHero = -1;
-            }
-
-        }
-        if (localHero == -1)
-        {
-            return -1;
-        }
-
-    }
-
-    auto VBE = Heroes[localHero]->IsVisibleByEnemy();
     
+    //iAttackRange = Heroes[localHero]->AttackRange();
 
-    duplicates.push_front(VBE);
-    if (duplicates.size() == threshold + 1)
-        duplicates.pop_back();
-
-    if (unique_num() < 2)
-    {
-        return 0;
-    }
     return 1;
 }
 
@@ -255,7 +226,8 @@ int getVBE() {
     }
 
     auto VBE = Heroes[localHero]->IsVisibleByEnemy();
-   
+    //isAlive = Heroes[localHero]->IsAlive();
+    //isVisibleByEnemy = Heroes[localHero]->IsVisibleByEnemy();
 
     duplicates.push_front(VBE);
     if (duplicates.size() == threshold + 1)
@@ -281,10 +253,10 @@ void ResetConvars()
         particle_hack->var->value.boolean = true;
         drawrange->var->value.flt = (0);
         sv_cheats->var->value.boolean = (0);
-        //if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback)
-        //{
-            //callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(4000), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
-        //}
+        if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback)
+        {
+            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(3999), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
+        }
         /*
          if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback)
         {
@@ -336,8 +308,9 @@ void SetCamDistance(int val) {
         r_farz->var->value.flt = ((float)(val * 2)); //29-Jan-23
         if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback) 
         {
-            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(4000), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
+            callback(ICVar::ConVarID{ .impl = static_cast<std::uint64_t>(3999), .var_ptr = (void*)&camera_distance }, 0, &camera_distance->var->value, &old_val); //works 29-Jan-23
         }
+        
         /*
         if (auto callback = VEngine->GetCVarCallback(camera_distance->var->CALLBACK_INDEX); callback) 
         {
@@ -360,4 +333,11 @@ void Print(const char* label, TipeData nilai)
 void PrintHero1()
 {
     std::cout << "localHero Index Number :\t" << localHero << "\n";
+    std::cout << "localHero IsAlive :\t" << isAlive << "\n";
+    std::cout << "localHero isVisibleByEnemy :\t" << isVisibleByEnemy << "\n";
+    //std::cout << "localHero iAttackRange :\t" << iAttackRange << "\n";
+
+    //std::cout << "localHero IsAlive :\t" << Heroes[localHero]->IsAlive() << "\n";
+    //std::cout << "localHero TeamNum :\t" << Heroes[localHero]->TeamNum() << "\n";
+    //std::cout << "localHero AttackRange :\t" << Heroes[localHero]->AttackRange() << "\n";
 }

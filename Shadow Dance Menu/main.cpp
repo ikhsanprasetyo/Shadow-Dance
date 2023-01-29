@@ -171,6 +171,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 	if (tempBParticleHack != bParticleHack)
 	{
 		SetParticleHack(!bParticleHack);
+		
 	}
 	if (tempBNoFog != bNoFog)
 	{
@@ -182,10 +183,11 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 
 	}
 	
-	
+	//GetHeroValue();
 	if (GetAsyncKeyState(VK_NUMPAD1) & 1) //29-Jan-23
 	{
 		PrintHero1(); 
+		
 	}
 
 	tempBVBE = bVBE, tempBDrawRange = bDrawRange, tempBParticleHack = bParticleHack, tempBNoFog = bNoFog;

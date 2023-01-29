@@ -2,7 +2,7 @@
 
 class CEntityInstance;
 u64 m_iTeamNum, m_hOwnerEntity, m_flStartSequenceCycle, m_fGameTime, m_nGameState, m_lifeState,
-m_iGameMode, m_clrRender, m_hReplicatingOtherHeroModel;
+m_iGameMode, m_clrRender, m_hReplicatingOtherHeroModel, m_iAttackRange;
 
 struct SchemaClassBinding {
     SchemaClassBinding* parent; // I THINK
@@ -61,6 +61,18 @@ public:
     float IsVisibleByEnemy() {
         return *(float*)((u64)this + m_flStartSequenceCycle);
     }
+    /*
+    int TeamNum()
+    {
+        return *(int*)((u64)this + m_iTeamNum);
+    }
+    int AttackRange()
+    {
+        return *(int*)((u64)this + m_iAttackRange);
+    }
+    */
+    
+    
 };
 
 
