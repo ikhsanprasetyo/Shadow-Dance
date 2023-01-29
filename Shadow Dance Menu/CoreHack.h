@@ -9,7 +9,7 @@ bool isEntityPopulated();
 void InitConvars();
 void ResetConvars();
 
-void SetSvCheats(int val);
+//void SetSvCheats(int val);
 void SetWeather(int val);
 void SetDrawRange(int val);
 void SetParticleHack(int val);
