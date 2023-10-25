@@ -1,8 +1,8 @@
 #pragma once
 #include <string.h>
-
+#inlcude <cstdint>
 #define cc const char*
-#define u64 unsigned long long
+//#define uint64_t unsigned long long
 
 typedef void* (*CreateInterfaceFn)(const char* pName, int* pReturnCode);
 typedef void* (*InstantiateInterfaceFn) ();

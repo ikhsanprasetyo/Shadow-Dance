@@ -45,7 +45,7 @@ CEntityInstance* OnAddEntity(CGameEntitySystem* ecx, CEntityInstance* ptr, Entit
     
     if (strstr(typeName, "DOTA_Unit_Hero")) {
 
-        auto alreadyExists = false;
+        bool alreadyExists = false;
         for (auto hero : Heroes)
         {
             if (typeName == hero->Schema_DynamicBinding()->bindingName)
@@ -119,7 +119,7 @@ void InitConvars() {
         {
             particle_hack = cvarNode;
         }
-        cvarNode = ((ICVar::CvarNode*)((u64)cvarNode + 0x10));
+        cvarNode = ((ICVar::CvarNode*)((uint64_t)cvarNode + 0x10));
     }
 
 }
@@ -140,8 +140,8 @@ void InitEntity() {
 
 void InitSchema() {
     CMsg = (ConMsg)GetProcAddress(GetModuleHandleA("tier0.dll"), "Msg");
-    SchemaSystem = (u64)GetInterface("schemasystem.dll", "SchemaSystem_001");
-    //Panorama = (u64)GetInterface("panorama.dll", "PanoramaUIEngine001"); //29-Jan-23
+    SchemaSystem = (uint64_t)GetInterface("schemasystem.dll", "SchemaSystem_001");
+    //Panorama = (uint64_t)GetInterface("panorama.dll", "PanoramaUIEngine001"); //29-Jan-23
     Netvars = new SchemaNetvarCollection;
     Netvars->Add("C_DOTA_BaseNPC", "client.dll");
     Netvars->Add("C_DOTA_BaseNPC_Hero", "client.dll");
@@ -151,24 +151,24 @@ void InitSchema() {
     Netvars->Add("C_BaseModelEntity", "client.dll");
     Netvars->Add("C_BaseCombatCharacter", "client.dll");
 
-    m_iTeamNum = Netvars->Get((u64)"m_iTeamNum")->offset;
-    m_hOwnerEntity = Netvars->Get((u64)"m_hOwnerEntity")->offset;
-    m_flStartSequenceCycle = Netvars->Get((u64)"m_flStartSequenceCycle")->offset;
-    m_fGameTime = Netvars->Get((u64)"m_fGameTime")->offset;
-    m_nGameState = Netvars->Get((u64)"m_nGameState")->offset;
-    m_iGameMode = Netvars->Get((u64)"m_iGameMode")->offset;
-    m_hReplicatingOtherHeroModel = Netvars->Get((u64)"m_hReplicatingOtherHeroModel")->offset;
-    m_lifeState = Netvars->Get((u64)"m_lifeState")->offset;
+    m_iTeamNum = Netvars->Get((uint64_t)"m_iTeamNum")->offset;
+    m_hOwnerEntity = Netvars->Get((uint64_t)"m_hOwnerEntity")->offset;
+    m_flStartSequenceCycle = Netvars->Get((uint64_t)"m_flStartSequenceCycle")->offset;
+    m_fGameTime = Netvars->Get((uint64_t)"m_fGameTime")->offset;
+    m_nGameState = Netvars->Get((uint64_t)"m_nGameState")->offset;
+    m_iGameMode = Netvars->Get((uint64_t)"m_iGameMode")->offset;
+    m_hReplicatingOtherHeroModel = Netvars->Get((uint64_t)"m_hReplicatingOtherHeroModel")->offset;
+    m_lifeState = Netvars->Get((uint64_t)"m_lifeState")->offset;
 
-    m_iHealth = Netvars->Get((u64)"m_iHealth")->offset;
-    m_iMaxHealth = Netvars->Get((u64)"m_iMaxHealth")->offset;
+    m_iHealth = Netvars->Get((uint64_t)"m_iHealth")->offset;
+    m_iMaxHealth = Netvars->Get((uint64_t)"m_iMaxHealth")->offset;
 
-    //m_bDormant = Netvars->Get((u64)"m_bDormant")->offset; //30-Jan-23 test
+    //m_bDormant = Netvars->Get((uint64_t)"m_bDormant")->offset; //30-Jan-23 test
     //m_clrRender //ganti warna hero
-    //m_hOwnerEntity = Netvars->Get((u64)"m_hAssignedHero")->offset; //29-Jan-23 test
+    //m_hOwnerEntity = Netvars->Get((uint64_t)"m_hAssignedHero")->offset; //29-Jan-23 test
    
     //m_iHealthBarOffset
-    //m_iAttackRange = Netvars->Get((u64)"m_iAttackRange")->offset; //not working
+    //m_iAttackRange = Netvars->Get((uint64_t)"m_iAttackRange")->offset; //not working
     
 }
 

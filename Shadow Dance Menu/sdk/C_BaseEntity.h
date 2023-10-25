@@ -1,7 +1,7 @@
 #pragma once
 
 class CEntityInstance;
-u64 m_iTeamNum, m_hOwnerEntity, m_flStartSequenceCycle, m_fGameTime, m_nGameState, m_lifeState,
+uint64_t m_iTeamNum, m_hOwnerEntity, m_flStartSequenceCycle, m_fGameTime, m_nGameState, m_lifeState,
 m_iGameMode, m_clrRender, m_hReplicatingOtherHeroModel, m_iAttackRange, m_iHealth, m_iMaxHealth, m_hAssignedHero, m_bDormant;
 
 struct SchemaClassBinding {
@@ -21,7 +21,7 @@ public:
 class CENTITYIDENTITY {
 public:
     CEntityInstance* entity;//0
-    u64 baseinfo;//8
+    uint64_t baseinfo;//8
     CHANDLE handle;//10
 private:
     int unk;//14
@@ -49,7 +49,7 @@ public:
     }
     int OwnerIndex()
     {
-        return (*(int*)((u64)this + m_hOwnerEntity)) & 0x7FFF;
+        return (*(int*)((uint64_t)this + m_hOwnerEntity)) & 0x7FFF;
     }
     int IsAlive() {
         //enum LifeState : int
@@ -58,28 +58,28 @@ public:
         //};
 
         //int unitAlive = 65536, unitDead =65538;
-        return *(int*)((u64)this + m_lifeState);
+        return *(int*)((uint64_t)this + m_lifeState);
     }
     float IsVisibleByEnemy() {
-        return *(float*)((u64)this + m_flStartSequenceCycle);
+        return *(float*)((uint64_t)this + m_flStartSequenceCycle);
     }
     int TeamNum()
     {
-        return *(int*)((u64)this + m_iTeamNum);
+        return *(int*)((uint64_t)this + m_iTeamNum);
     }
     int Health()
     {
-        return *(int*)((u64)this + m_iHealth);
+        return *(int*)((uint64_t)this + m_iHealth);
     }
     int MaxHealth()
     {
-        return *(int*)((u64)this + m_iMaxHealth);
+        return *(int*)((uint64_t)this + m_iMaxHealth);
     }
 
     /*
     int IsDormant()
     {
-        return *(int*)((u64)this + m_bDormant);
+        return *(int*)((uint64_t)this + m_bDormant);
     }
     */
     
@@ -87,7 +87,7 @@ public:
     /*
     int GetHighestEntityIndex()
     {
-        return *(int*)((u64)this + 0x1e90);
+        return *(int*)((uint64_t)this + 0x1e90);
     }
     */
     
@@ -95,7 +95,7 @@ public:
     /*
     int AttackRange()
     {
-        return *(int*)((u64)this + m_iAttackRange);
+        return *(int*)((uint64_t)this + m_iAttackRange);
     }
     */
     
