@@ -26,8 +26,8 @@ public:
 private:
     int unk;//14
 public:
-    cc name;//18
-    cc designer_name;
+    const char* name;//18
+    const char* designer_name;
     char pad[0x30];
     CENTITYIDENTITY* m_pNext;//20
 };

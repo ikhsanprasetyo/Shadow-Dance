@@ -4,32 +4,32 @@ uint64_t SchemaSystem;
 //uint64_t Panorama; //29-Jan-23
 
 int vstrcmp(uint64_t a, uint64_t b) {
-    return strcmp((cc)a, (cc)b);
+    return strcmp((const char*)a, (const char*)b);
 }
-int vstrcmp(cc a, uint64_t b) {
-    return strcmp(a, (cc)b);
+int vstrcmp(const char* a, uint64_t b) {
+    return strcmp(a, (const char*)b);
 }
-int vstrcmp(uint64_t a, cc b) {
-    return strcmp((cc)a, b);
+int vstrcmp(uint64_t a, const char* b) {
+    return strcmp((const char*)a, b);
 }
-int vstrcmp(cc a, cc b) {
+int vstrcmp(const char* a, const char* b) {
     return strcmp(a, b);
 }
-typedef void(__fastcall* ConMsg)(cc, uint64_t, uint64_t, uint64_t);
+typedef void(__fastcall* ConMsg)(const char*, uint64_t, uint64_t, uint64_t);
 ConMsg CMsg = 0;
-void CMSG(cc pure) {
+void CMSG(const char* pure) {
 
     CMsg(pure, 0, 0, 0);
 
 }
 
-void CMSG(cc format, uint64_t p1) {
+void CMSG(const char* format, uint64_t p1) {
 
     CMsg(format, p1, 0, 0);
 
 }
 
-void CMSG(cc format, uint64_t p1, uint64_t p2) {
+void CMSG(const char* format, uint64_t p1, uint64_t p2) {
 
     CMsg(format, p1, p2, 0);
 
@@ -129,7 +129,7 @@ public:
 class SchemaNetvarCollection {
 public:
     CArray<schemanetvar, 1000> Netvars;
-    void Add(cc _class, cc _module) {
+    void Add(const char* _class, const char* _module) {
         uint64_t Scope = ((uint64_t(__fastcall*)(uint64_t schemasys, const char* _mod))
             (*(uint64_t*)(*(uint64_t*)(SchemaSystem)+0x68)))(SchemaSystem, _module);
         if (!Scope) { CMSG("No such scope %s!\n", (uint64_t)_module); return; }

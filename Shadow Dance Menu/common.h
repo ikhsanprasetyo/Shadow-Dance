@@ -1,7 +1,7 @@
 #pragma once
 #include <string.h>
 #inlcude <cstdint>
-#define cc const char*
+//#define const char* const char*
 //#define uint64_t unsigned long long
 
 typedef void* (*CreateInterfaceFn)(const char* pName, int* pReturnCode);
@@ -55,5 +55,5 @@ inline uintptr_t GetAbsoluteAddress(uintptr_t instruction_ptr, int offset, int s
 
 template<typename T, typename Z>
 bool StringsMatch(T a, Z b) {
-	return !strcmp((cc)a, (cc)b);
+	return !strcmp((const char*)a, (const char*)b);
 }
